@@ -1,0 +1,78 @@
+#	LablGL and Togl configuration file
+#
+# Please have a look at the config/Makefile in the Objective Caml distribution,
+# or at the labltklink script to get the information needed here
+#
+
+##### Adjust these always
+
+# Uncomment if you have the fast ".opt" compilers
+CAMLC = ocamlc.opt
+CAMLOPT = ocamlopt.opt
+LIBRARIAN = ocamlmklib -verbose -ocamlc ocamlc -ocamlopt ocamlopt
+
+# Where to put the lablgl script
+OCAMLDIR = c:/OCaml
+BINDIR = $(OCAMLDIR)/bin
+DLLDIR = $(OCAMLDIR)/lib/stublibs
+INSTALLDIR = $(OCAMLDIR)/lib/lablGL
+
+# Where to find X headers
+#XINCLUDES = -I/usr/X11R6/include
+# X libs (for broken RTLD_GLOBAL: e.g. FreeBSD 4.0)
+#XLIBS = -L/usr/X11R6/lib -lXext -lXmu -lX11
+
+# Where to find Tcl/Tk headers
+# This must the same version as for LablTk
+TK_ROOT = C:/Tcl
+TKINCLUDES = -I"$(TK_ROOT)/include"
+# Tcl/Tk libs (for broken RTLD_GLOBAL: e.g. FreeBSD 4.0)
+#TKLIBS = -ltk83 -ltcl83
+#TKLIBS = -ldopt "$(TK_ROOT)/bin/tcl85.dll" -ldopt "$(TK_ROOT)/bin/tk85.dll" 
+TKLIBS0 = -L$(TK_ROOT)/lib tcl85.lib tk85.lib -lws2_32 -luser32 -lgdi32
+TKLIBS = -ldopt -L$(TK_ROOT)/bin -ldopt tcl85.dll -ldopt tk85.dll \
+  -ccopt -L$(TK_ROOT)/lib -cclib tcl85.lib -cclib tk85.lib \
+  -lws2_32 -luser32 -lgdi32
+
+# Where to find OpenGL/Mesa/Glut headers and libraries
+GLINCLUDES = -DHAS_GLEXT_H -DGL_GLEXT_PROTOTYPES -DGLU_VERSION_1_3
+GLLIBS = -lglu32 -lopengl32
+GLLIBS0 = $(GLLIBS)
+GLUTLIBS = -lglut32
+GLUTLIBS0 = $(GLUTLIBS)
+# The following libraries may be required (try to add them one at a time)
+#GLLIBS = -lGL -lGLU -lXmu -lXext -lXi -lcipher -lpthread
+
+# How to index a library after installing (ranlib required on MacOSX)
+RANLIB = :
+#RANLIB = ranlib
+
+##### Uncomment these for windows
+#TOOLCHAIN = msvc
+XB = .bat
+XE = .exe
+XS = .dll
+MKLIB = ar rcs 
+MKDLL = gcc -mno-cygwin -shared -o
+##### Adjust these if non standard
+
+# The Objective Caml library directory
+# must set it by hand as spaces are not allowed
+#LIBDIR = `ocamlc -where`
+
+# Where to put dlls (if dynamic loading available)
+#DLLDIR = `ocamlc -where`/stublibs
+
+# Where to put LablGL (standard)
+#INSTALLDIR = $(LIBDIR)/lablGL
+
+# Where is Togl (default)
+#TOGLDIR = Togl
+
+# Togl Window System
+# Should be one of TOGL_X11, TOGL_WGL (windows), TOGL_AGL (macosx)
+# TOGL_AGL isn't supported currently
+TOGL_WS = TOGL_WGL
+
+# C Compiler options
+COPTS = -c -O -DHAS_SYS_TIME

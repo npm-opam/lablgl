@@ -1,0 +1,166 @@
+LablGL 1.05:
+------------
+2013-09-20:
+* make it work with the OCaml 4.01 windows installer
+  (both lablglut and togl)
+
+2013-09-11:
+* add configuration file for Ubuntu
+
+2012-10-18:
+* allow building with make -j
+
+2012-06-05:
+* switch to Togl 1.7, doesn't need Tk internals anymore
+
+2012-03-06:
+* add `bgr and `bgra to Gl.format and GlTex.format (reported by Vu Ngoc San)
+
+2010-06-16:
+* fix Glut.special_of_int to raise no exception (reported by malc)
+
+2010-03-11:
+* merge glShader support by Florent Monnier
+
+LablGL 1.04:
+------------
+2008-12-21:
+* support windows compilation for ocaml 3.11
+
+2008-10-25:
+* support Tcl/Tk 8.5
+* require Raw.static in GlArray (reported by malc)
+* check for GL_ARB_texture_non_power_of_two in GlTex (reported by malc)
+
+2008-01-10:
+* fix GlMap.eval_coord2 (reported by Florent Monnier)
+
+LablGL 1.03:
+---------------------
+2007-04-13: [Jacques]
+* add glPolygonOffset
+* fix Glut.createMenu
+* fix GlTex.gen_textures
+
+2006-07-29: [Jacques]
+* make LablGlut's callback window dependent
+* simplify glutInit
+
+2006-03-23: [Jacques]
+* avoid all uses of stderr in stubs (caused incompatibilities)
+* use mingw import libraries
+* mingw build works again (but togl only works in dll mode)
+
+LablGL 1.02:
+------------
+2005-10-28: [Jacques]
+* fix GlMat.mult_transpose (Gregory Guyomarc'h)
+
+2005-10-20: [Jacques]
+* correct GlTex.image2d border bug (Eric Cooper)
+
+2005-10-14: [Jacques]
+* add glGetError
+
+2004-07-20: [Jacques]
+* add index_logic_op and color_logic_op
+
+LablGL 1.01:
+------------
+2004-07-13: [Jacques]
+* merge Jon Harrop's tesselator support
+
+LablGL 1.00:
+------------
+2003-10-01: [Jacques]
+* split togl, move examples to Togl/examples
+* add mingw support
+
+2003-09-29: [Jacques]
+* reorganized directories and Makefiles
+
+2003-09-25: [Christophe]
+* merge ijtrotts' LablGlut
+
+2003-09-24: [Christophe]
+* add glArray support
+
+LablGL 0.99:
+------------
+
+* add texture binding functions, contributed by Chris Hecker
+
+* add support for Tcl/Tk8.4
+
+* allow compiling and installing without Tk
+
+LablGL 0.98:
+------------
+
+* add windows port
+
+* add lablGL.spec (Ben Martin)
+
+* add GLU_VERSION and GLU_EXTENSIONS tags
+
+* check returned strings
+
+LablGL 0.97:
+------------
+
+* support ocaml 3.04
+
+LablGL 0.96:
+------------
+
+* adapt to new label mode / new variant syntax
+
+* split library into lablgl.cma and togl.cma to support ocaml dynamic
+  linking
+
+LablGL 0.95:
+------------
+
+* corrected variant matching for Objective Caml 3.01
+
+* add variance annotations
+
+* some bug fixes
+
+LablGL 0.94:
+------------
+
+* corrected syntax for Objective Caml 3.00
+
+LablGL 0.93:
+------------
+
+* use Objective Caml 2.99 instead of Objective Label.
+
+* a few functions changed, to comply with the new semantics
+  for optional arguments.
+
+* togl.cmo is not included in lablgl.cma, to allow easy linking
+  with lablgtk.
+
+LablGL 0.92:
+------------
+
+* allow use of newer patch levels for Tk.
+
+* corrected bugs in the Raw module. Now, it handles correctly
+  alignment constraints on doubles.
+
+* added the Raw.sub function, which extracts a slice from an existing
+  raw array.  Values are still physically shared with the original
+  array.
+
+LablGL 0.91:
+------------
+
+* switched to Togl-1.5. The previous versions had problems on Linux.
+
+LablGL 0.9:
+-----------
+
+* first public release
