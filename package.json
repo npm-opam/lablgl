@@ -1,0 +1,51 @@
+{
+    "name": "lablgl-actual",
+    "exportedEnvVars": {
+        "lablgl_installed": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "true"
+        },
+        "FINDLIB": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/lib"
+        },
+        "version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "1.05.0"
+        },
+        "lablgl_enable": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "enable"
+        },
+        "PATH": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/bin"
+        },
+        "lablgl_version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "1.05.0"
+        }
+    },
+    "version": "1.05.0",
+    "dependencies": {
+        "substs": "https://github.com/yunxing/substs.git",
+        "@opam-alpha/camlp4": "*",
+        "nopam": "https://github.com/yunxing/nopam.git",
+        "opam-installer-bin": "https://github.com/yunxing/opam-installer-bin.git",
+        "dependency-env": "https://github.com/npm-ml/dependency-env.git"
+    },
+    "scripts": {
+        "postinstall": "eval $(dependencyEnv) && nopam && cp Makefile.config.ex Makefile.config && cp Makefile.config.osx Makefile.config && mkdir -p $opam_bin && make INSTALLDIR=$opam_lib/lablgl glut && make glutopt && make install -C src BINDIR=$opam_bin INSTALLDIR=$opam_lib/lablgl DLLDIR=$opam_lib/stublibs && make install -C LablGlut/src BINDIR=$opam_bin INSTALLDIR=$opam_lib/lablgl DLLDIR=$opam_lib/stublibs && (opam-installer --prefix=$opam_prefix || true)"
+    },
+    "peerDependencies": {
+        "@opam-alpha/ocaml": ">= 4.2.3"
+    }
+}
